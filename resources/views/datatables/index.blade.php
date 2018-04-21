@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<input type="text" class="form-control" name="start_date" value="{{ Carbon\Carbon::now()->format('d/m/Y') }}">
-<input type="text" class="form-control" name="end_date" value="{{ Carbon\Carbon::now()->format('d/m/Y') }}">
+<input type="text" class="form-control" name="start_date" value="21/04/2017">
+<input type="text" class="form-control" name="end_date" value="21/04/2019">
+<button class="btn btn-primary" id="reloadBtn">Search</button>
 
 <hr>
 
@@ -40,10 +41,20 @@
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' }
             ],
-            // dom: 'Bfrtip',
+            dom: 'Blfrtip',
             // buttons: [
-            //     'print'
+            //     {
+            //         extend: 'pdfHtml5',
+            //         download: 'open'
+            //     }
             // ]
+            buttons: [
+                'print'
+            ]
+        });
+
+        $('#reloadBtn').on('click', function() {
+            $('#users-table').DataTable().ajax.reload();
         });
     });
     </script>
