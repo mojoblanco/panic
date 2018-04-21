@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,13 @@ class DatatablesController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function anyData()
+    public function anyData(Request $request)
     {
-        return Datatables::of(User::query())->make(true);
+        $start = Carbon::createFromFormat('d/m/Y', $request->start_date);
+        $end = Carbon::createFromFormat('d/m/Y', $request->end_date);
+
+        $data = User::between($start, $end);
+        return Datatables::of($data)->make(true);
     }
 
     public function allUsers()
