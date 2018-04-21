@@ -30,11 +30,29 @@ class DatatablesController extends Controller
         $end = Carbon::createFromFormat('d/m/Y', $request->end_date);
 
         $data = User::between($start, $end);
-        return Datatables::of($data)->make(true);
+        return Datatables::of($data)
+            ->addColumn( 'action', function ( $data )
+                {
+                    // $showLink = route('datatables.show', $data->id);
+                    // return '<a href="' . $showLink . '" class="btn btn-xs btn-primary"><i class="fa fa-truck"></i></a>';
+                    return 'Gold';
+                }
+            )
+            ->make(true);
+
+            
     }
 
     public function allUsers()
     {
         return User::all();
+    }
+
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        return $user;
     }
 }

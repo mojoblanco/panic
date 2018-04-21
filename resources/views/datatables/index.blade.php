@@ -15,7 +15,7 @@
                 <th>Email</th>
                 <th>Created At</th>
                 <th>Updated At</th>
-                <th>Action</th>
+                <th align="center" style="padding-right: 15px;">Action</th>
             </tr>
         </thead>
     </table>
@@ -39,7 +39,14 @@
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'updated_at', name: 'updated_at' }
+                { data: 'updated_at', name: 'updated_at' },
+                {
+                "className":      'options',
+                "data":           null,
+                "render": function(data, type, full, meta){
+                    return '<a href="/' + data.id + '/show" class="btn btn-sm btn-success">Show</a>';
+                }
+            }
             ],
             dom: 'Blfrtip',
             // buttons: [

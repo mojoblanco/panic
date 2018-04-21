@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/datatables', 'DatatablesController@getIndex')->name('datatables');
 Route::get('/any-data', 'DatatablesController@anyData')->name('datatables.data');
 Route::get('/users', 'DatatablesController@allUsers');
+Route::get('/{id}/show', 'DatatablesController@show')->name('datatables.show');
 
 Route::get('/foo', function() {
     //echo date_format('10/10/2018', 'd-m-Y');
