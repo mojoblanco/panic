@@ -6,7 +6,7 @@
 
 <hr>
 
-    <table class="table table-bordered" id="users-table">
+    <table class="table table-bordered display" id="users-table" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
@@ -39,7 +39,11 @@
                 { data: 'email', name: 'email' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' }
-            ]
+            ],
+            // dom: 'Bfrtip',
+            // buttons: [
+            //     'print'
+            // ]
         });
     });
     </script>
